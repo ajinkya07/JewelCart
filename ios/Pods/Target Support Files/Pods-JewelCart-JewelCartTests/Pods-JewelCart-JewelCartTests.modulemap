@@ -1,0 +1,6 @@
+module Pods_JewelCart_JewelCartTests {
+  umbrella header "Pods-JewelCart-JewelCartTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
