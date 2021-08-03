@@ -6,11 +6,16 @@ platform :ios, '10.0'
 target 'JewelCart' do
   config = use_native_modules!
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  
   use_react_native!(
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => false
   )
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
   target 'JewelCartTests' do
     inherit! :complete
