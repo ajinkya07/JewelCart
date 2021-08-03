@@ -1,7 +1,8 @@
 com/jewelcart/MainActivity.java
  com.jewelcart.MainActivity
-com/facebook/react/PackageList.java
- com.facebook.react.PackageList
+com/jewelcart/MainApplication.java
+ com.jewelcart.MainApplication
+ com.jewelcart.MainApplication$1
 com/jewelcart/BuildConfig.java
  com.jewelcart.BuildConfig
 com/jewelcart/ReactNativeFlipper.java
@@ -9,6 +10,5 @@ com/jewelcart/ReactNativeFlipper.java
  com.jewelcart.ReactNativeFlipper$1
  com.jewelcart.ReactNativeFlipper$2
  com.jewelcart.ReactNativeFlipper$2$1
-com/jewelcart/MainApplication.java
- com.jewelcart.MainApplication
- com.jewelcart.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

@@ -143,7 +143,11 @@ export default function TabNavigator() {
         style: {
           backgroundColor: color.white,
           elevation: 0,
-          marginBottom: 5,
+          paddingBottom: 2,
+        },
+        labelStyle: {
+          fontSize: 10,
+          fontFamily: 'Montserrat-Medium',
         },
       }}
     >
