@@ -4,12 +4,15 @@ import {
     FlatList, Dimensions, ScrollView,
     RefreshControl,
     ImageBackground,
+    Animated,
+    SafeAreaView
 } from 'react-native';
 import styles from '@home/HomeStyle';
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
 import LinearGradient from 'react-native-linear-gradient';
 import Carousel, { ParallaxImage, Pagination } from 'react-native-snap-carousel';
-
+import color from '@values/colors'
+import Heading from '../../component/Common/Heading';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 const { height, width } = Dimensions.get('screen')
@@ -17,19 +20,23 @@ var isFetching = false;
 const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
 
 const categoryDataSource = [
-    { id: '1', categoryName: 'Ring', categoryImage: require('@assets/ring.jpg') },
+    { id: '1', categoryName: 'Rings', categoryImage: require('@assets/ring.jpg') },
     { id: '2', categoryName: 'Chains', categoryImage: require('@assets/chains.jpg') },
     { id: '3', categoryName: 'Earrings', categoryImage: require('@assets/earrings.jpg') },
     { id: '4', categoryName: 'Pendants', categoryImage: require('@assets/pendants.jpg') },
-    { id: '5', categoryName: 'All Jewellery', categoryImage: require('@assets/ring.jpg') },
+    { id: '5', categoryName: 'Pendants', categoryImage: require('@assets/1.jpg') },
+    { id: '6', categoryName: 'Pendants', categoryImage: require('@assets/2.jpg') },
+    { id: '7', categoryName: 'Pendants', categoryImage: require('@assets/pendants.jpg') },
+    { id: '8', categoryName: 'All Jewellery', categoryImage: require('@assets/4.jpg') },
+    { id: '9', categoryName: 'All Jewellery', categoryImage: require('@assets/5.jpg') },
 ]
 
 const sliderData = [
-    { id: '1', sliderImage: require('@assets/slider3.jpg'), title: 'Modular', subtitle: LOREM_IPSUM },
-    { id: '2', sliderImage: require('@assets/slider2.jpg'), title: 'Solitair Rings', subtitle: LOREM_IPSUM },
-    { id: '3', sliderImage: require('@assets/slider1.jpg'), title: 'Affordable Pendants', subtitle: LOREM_IPSUM },
-    { id: '4', sliderImage: require('@assets/slider4.png'), title: 'Ultra Light' },
-    { id: '5', sliderImage: require('@assets/slider5.jpg'), title: 'Top Modular ' },
+    { id: '1', sliderImage: require('@assets/1.jpg'), title: 'Modular', subtitle: LOREM_IPSUM },
+    { id: '2', sliderImage: require('@assets/2.jpg'), title: 'Solitair Rings', subtitle: LOREM_IPSUM },
+    { id: '3', sliderImage: require('@assets/3.jpg'), title: 'Affordable Pendants', subtitle: LOREM_IPSUM },
+    { id: '4', sliderImage: require('@assets/4.jpg'), title: 'Ultra Light' },
+    { id: '5', sliderImage: require('@assets/5.jpg'), title: 'Top Modular ' },
 ]
 
 const infoData = [
@@ -44,17 +51,18 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeSliderIndex: 0
+            activeSliderIndex: 0,
+            scrollIndicatorY: new Animated.Value(0),
+
         };
     }
 
 
-
-    getCategory = (item) => {
+    getCategory = (item, index) => {
         const { categoryInnerView, categoryImageView, categoryImg, categoryText, } = styles;
 
         return (
-            <TouchableOpacity style={categoryInnerView}>
+            <TouchableOpacity style={categoryInnerView} key={index}>
                 <View style={categoryImageView}>
                     <ShimmerPlaceholder width={55} height={55} style={{ borderRadius: 55 / 2 }} visible={!isFetching}>
                         <Image
@@ -117,7 +125,7 @@ export default class Home extends Component {
                         style={styles.sliderView}
                     >
                         {sliderData.map((image, index) =>
-                            <ShimmerPlaceholder height={height * 0.32} width={width} visible={!isFetching}>
+                            <ShimmerPlaceholder key={index} height={height * 0.32} width={width} visible={!isFetching}>
                                 <Image
                                     key={image.id}
                                     source={image.sliderImage}
@@ -125,18 +133,13 @@ export default class Home extends Component {
                                     style={styles.sliderView}
                                 />
                             </ShimmerPlaceholder>
-
                         )}
                     </ScrollView>
                 </View>
 
                 <View style={styles.sliderDot}>
                     {!isFetching && sliderData.map((image, index) =>
-                        <Text
-                            key={index}
-                            style={activeSliderIndex === index ? styles.dotActive : styles.dotInActive}
-                        >•
-                        </Text>
+                        <Text key={index} style={activeSliderIndex === index ? styles.dotActive : styles.dotInActive}>•</Text>
                     )}
                 </View>
             </>
@@ -154,11 +157,11 @@ export default class Home extends Component {
         }
     }
 
-    getInfo = (item) => {
+    getInfo = (item, index) => {
         const { infoView, infoImageView, infoImg, infoText, } = styles;
 
         return (
-            <View style={infoView} key={item.id}>
+            <View style={infoView} key={'i' + index}>
                 <View style={infoImageView}>
                     <ShimmerPlaceholder
                         width={65}
@@ -186,7 +189,7 @@ export default class Home extends Component {
     exclusiveBanner({ item, index }, parallaxProps) {
         const { textBold15, carouselSubText, titleView,
             carouselImage, carouselImageView, imageContainer,
-            imageShimmer } = styles
+            imageShimmer, centerTop7 } = styles
         return (
             <TouchableOpacity key={'b' + index} style={carouselImageView} >
                 <ShimmerPlaceholder
@@ -202,38 +205,34 @@ export default class Home extends Component {
                         {...parallaxProps}
                     />
                 </ShimmerPlaceholder>
-
-
                 <View style={titleView}>
                     <ShimmerPlaceholder
                         width={100}
                         height={15}
-                        style={{ paddingTop: 7, alignSelf: 'center' }}
+                        style={centerTop7}
                         visible={!isFetching}>
                         <Text numberOfLines={1} style={textBold15}>{item.title}</Text>
                     </ShimmerPlaceholder>
                     <ShimmerPlaceholder
                         width={200}
                         height={15}
-                        style={{ paddingTop: 7, alignSelf: 'center' }}
+                        style={centerTop7}
                         visible={!isFetching}>
                         <Text numberOfLines={2} style={carouselSubText}>{item.subtitle}</Text>
                     </ShimmerPlaceholder>
                 </View>
-
             </TouchableOpacity>
         );
     }
 
 
     renderCategories = (item, index) => {
-
         return (
-            <TouchableOpacity key={'#' + item.id} style={styles.card}>
+            <TouchableOpacity key={'#' + index} style={styles.categoryCard}>
                 <ShimmerPlaceholder
-                    width={width / 2 - 15}
-                    height={height * 0.23}
-                    style={styles.card}
+                    width={width / 2 - 5}
+                    height={190}
+                    style={styles.categoryCard}
                     visible={!isFetching}>
                     <ImageBackground
                         imageStyle={styles.imageBgBorder}
@@ -241,7 +240,7 @@ export default class Home extends Component {
                         source={item.categoryImage}
                     >
                         <View style={styles.contentView}>
-                            <Text numberOfLines={1} style={styles.textWhiteBold16}>
+                            <Text numberOfLines={1} style={styles.textWhiteBold20}>
                                 {item.categoryName}
                             </Text>
                             <Text numberOfLines={1} style={styles.textWhiteMedium12}>Starts from Rs 32321</Text>
@@ -254,98 +253,171 @@ export default class Home extends Component {
     };
 
 
+    discoverCollections(item, index) {
+        const {
+            textBlack18Med, carouselSubText, titleView,
+            collectionImage, collectionImageView, imageContainer,
+            imageShimmer, centerTop7 } = styles
+
+        return (
+            <TouchableOpacity key={'b' + index} style={collectionImageView} >
+                <ShimmerPlaceholder
+                    width={width - 70}
+                    height={height * 0.35}
+                    style={imageShimmer}
+                    visible={!isFetching}>
+                    <Image source={item.sliderImage} style={collectionImage} />
+                </ShimmerPlaceholder>
+
+                <View style={titleView}>
+                    <ShimmerPlaceholder
+                        width={100}
+                        height={15}
+                        style={isFetching ? centerTop7 : null}
+                        visible={!isFetching}>
+                        <Text numberOfLines={1} style={textBlack18Med}>Woven Totes</Text>
+                    </ShimmerPlaceholder>
+                    <ShimmerPlaceholder
+                        width={200}
+                        height={15}
+                        style={isFetching ? centerTop7 : null}
+                        visible={!isFetching}>
+                        <Text numberOfLines={2} style={carouselSubText}>Collection</Text>
+                    </ShimmerPlaceholder>
+                </View>
+            </TouchableOpacity >
+        );
+    }
 
     render() {
         const { categoryMainView, infoMainView,
             exclusiveView, exclusiveTitleView,
             infoTop, exclusiveSubText,
-            textBlack16 } = styles
+            textBlack18 } = styles
 
+        const { scrollIndicatorY } = this.state
         return (
-            <ScrollView style={styles.container} showsVerticalScrollIndicator={false} >
+            <SafeAreaView>
+                <Animated.ScrollView
+                    style={styles.container}
+                    scrollEventThrottle={16}
+                    showsVerticalScrollIndicator={false} >
 
-                {/*Top Category */}
-                <View style={categoryMainView}>
-                    <FlatList
-                        horizontal={true}
-                        data={categoryDataSource}
-                        showsHorizontalScrollIndicator={false}
-                        renderItem={({ item, index }) => this.getCategory(item)}
-                        keyExtractor={(item, index) => item.id}
-                    />
-                </View>
-
-                {/* Banner */}
-                {this.bannerView()}
-
-                {/* Info */}
-                <View style={isFetching ? infoTop : infoMainView}>
-                    <FlatList
-                        horizontal={true}
-                        data={infoData}
-                        showsHorizontalScrollIndicator={false}
-                        renderItem={({ item, index }) => this.getInfo(item)}
-                        keyExtractor={(item, index) => item.id}
-                    />
-                </View>
-
-
-                {/* Exclusive */}
-                <View style={exclusiveView}>
-
-                    <View style={exclusiveTitleView}>
-                        <ShimmerPlaceholder
-                            width={200}
-                            height={15}
-                            style={exclusiveTitleView}
-                            visible={!isFetching}>
-                            <Text numberOfLines={1} style={textBlack16}>Shop 0ur Exclusives</Text>
-                        </ShimmerPlaceholder>
-
-                        <ShimmerPlaceholder
-                            width={width - 60}
-                            height={15}
-                            style={exclusiveTitleView}
-                            visible={!isFetching}>
-                            <Text numberOfLines={2} style={exclusiveSubText}>{LOREM_IPSUM}</Text>
-                        </ShimmerPlaceholder>
+                    {/*Top Category */}
+                    <View style={categoryMainView}>
+                        <FlatList
+                            horizontal={true}
+                            data={categoryDataSource}
+                            showsHorizontalScrollIndicator={false}
+                            renderItem={({ item, index }) => this.getCategory(item, index)}
+                            keyExtractor={(item, index) => item.id}
+                        />
                     </View>
 
-                    <Carousel
-                        sliderWidth={width}
-                        sliderHeight={200}
-                        itemWidth={240}
-                        itemHeight={200}
-                        data={sliderData}
-                        renderItem={(data, index) => this.exclusiveBanner(data, index)}
-                        hasParallaxImages={true}
-                    />
-                </View>
+                    {/* Banner */}
+                    {this.bannerView()}
 
-
-                {/* Categories */}
-                <View style={exclusiveView}>
-
-                    <View style={exclusiveTitleView}>
-                        <ShimmerPlaceholder
-                            width={200}
-                            height={15}
-                            style={exclusiveTitleView}
-                            visible={!isFetching}>
-                            <Text numberOfLines={1} style={textBlack16}>Shop by Categories</Text>
-                        </ShimmerPlaceholder>
+                    {/* Info */}
+                    <View style={isFetching ? infoTop : infoMainView}>
+                        <FlatList
+                            horizontal={true}
+                            data={infoData}
+                            showsHorizontalScrollIndicator={false}
+                            renderItem={({ item, index }) => this.getInfo(item, index)}
+                            keyExtractor={(item, index) => item.id}
+                        />
                     </View>
 
-                    <FlatList
-                        data={categoryDataSource}
-                        renderItem={({ item, index }) => this.renderCategories(item, index)}
-                        numColumns={2}
-                        keyExtractor={(item, index) => item.id}
-                        contentContainerStyle={{ paddingVertical: 5 }}
-                    />
-                </View>
+                    {/* Bestsellers */}
+                    <View style={exclusiveView}>
+                        <Heading
+                            heading={'Discover our Collections'}
+                            subHeading={LOREM_IPSUM}
+                            isVisible={isFetching}
+                            showViewAll={true}
+                            onPress={null}
+                        />
+                        <Animated.ScrollView
+                            horizontal
+                            contentContainerStyle={{ marginHorizontal: 15, marginTop: 20 }}
+                            onScroll={Animated.event(
+                                [{ nativeEvent: { contentOffset: { x: scrollIndicatorY } } }],
+                                { useNativeDriver: true },
+                            )}
+                            scrollEventThrottle={16}
+                            showsHorizontalScrollIndicator={false}
+                        >
+                            {sliderData.map((data, index) => this.discoverCollections(data, index))}
+                        </Animated.ScrollView>
+                    </View>
 
-            </ScrollView>
+                    {/* <ScrollProgressComponent
+                        containerStyle={styles.scollComponentStyle}
+                        scrollPositionStyle={{
+                            transform: [
+                                {
+                                    translateX: Animated.multiply(
+                                        scrollIndicatorY,
+                                        0.1
+                                    ).interpolate({
+                                        inputRange: [0, 42],
+                                        outputRange: [0, 42],
+                                        extrapolate: 'clamp',
+                                    }),
+                                },
+                            ],
+                        }}
+                    /> */}
+
+                    {/* Exclusive */}
+                    <View style={exclusiveView}>
+                        <Heading
+                            heading={'Shop 0ur Exclusives'}
+                            subHeading={LOREM_IPSUM}
+                            isVisible={isFetching}
+                            showViewAll={true}
+                            onPress={null}
+                        />
+                        <Carousel
+                            sliderWidth={width}
+                            sliderHeight={200}
+                            itemWidth={240}
+                            itemHeight={200}
+                            data={sliderData}
+                            renderItem={(data, index) => this.exclusiveBanner(data, index)}
+                            hasParallaxImages={true}
+                        />
+                    </View>
+
+                    {/* Categories */}
+                    <View style={exclusiveView}>
+                        <Heading
+                            heading={'Shop by Categories'}
+                            showViewAll={false}
+                            isVisible={isFetching}
+                        />
+                        <FlatList
+                            data={categoryDataSource}
+                            renderItem={({ item, index }) => this.renderCategories(item, index)}
+                            numColumns={2}
+                            keyExtractor={(item, index) => item.id}
+                            contentContainerStyle={{ marginRight: 10, marginTop: isFetching ? 0 : -20 }}
+                        />
+                    </View>
+
+                </Animated.ScrollView>
+            </SafeAreaView>
+
         );
     }
 }
+
+
+ScrollProgressComponent = ({ containerStyle, scrollPositionStyle }) => (
+    <View style={containerStyle || null}>
+        <View style={styles.scollProgressContainer} />
+        <Animated.View
+            style={[styles.scollPosition, scrollPositionStyle || null]}
+        />
+    </View>
+);

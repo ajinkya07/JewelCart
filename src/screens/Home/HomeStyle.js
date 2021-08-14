@@ -7,36 +7,43 @@ const { height, width } = Dimensions.get('screen')
 
 export default {
     container: {
-        flex: 1
+        flex: 1,
     },
-    textWhiteBold16: {
-        fontSize: 16,
+    textWhiteBold20: {
+        fontSize: 20,
         fontFamily: 'Montserrat-Bold',
-        color: color.white
+        color: color.white,
+        letterSpacing: 0.2
     },
     textWhiteMedium12: {
         fontSize: 12,
         fontFamily: 'Montserrat-SemiBold',
         color: color.white,
     },
-    textBlack16: {
-        fontSize: 16,
+    textBlack18: {
+        fontSize: 18,
         fontFamily: 'Montserrat-Bold',
-        color: color.black
+        color: color.black,
+        lineHeight: 20,
+        letterSpacing: 0.2
+    },
+    textBlack18Med: {
+        fontSize: 18,
+        fontFamily: 'Montserrat-Medium',
+        color: color.black,
+        lineHeight: 20,
+        letterSpacing: 0.2
     },
     textWhite12: {
         fontSize: 12,
         fontFamily: 'Montserrat-Bold',
-        color: color.white
+        color: color.white,
     },
     textBold15: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 15,
         textAlign: 'center',
     },
-
-
-
 
     // category
     categoryMainView: {
@@ -53,7 +60,7 @@ export default {
         height: 55,
         width: 55,
         marginTop: 10,
-        backgroundColor: color.gray,
+        backgroundColor: color.grey,
         justifyContent: 'center',
         borderRadius: 55 / 2,
         alignItems: 'center'
@@ -92,7 +99,7 @@ export default {
     },
     dotInActive: {
         margin: 3,
-        color: color.gray,
+        color: color.grey,
         fontSize: 30
     },
     sliderDot: {
@@ -150,22 +157,42 @@ export default {
         textAlign: 'center'
     },
 
+    //discover collection
+    collectionImage: {
+        height: height * 0.35,
+        width: width - 70,
+        backgroundColor: color.white,
+        marginVertical: 20,
+        borderRadius: 20
+    },
+    collectionImageView: {
+        alignSelf: 'flex-start',
+        width: width - 70,
+        marginRight: 20,
+    },
+    scollComponentStyle: {
+        marginLeft: 15,
+        marginBottom: 30,
+    },
+    scollProgressContainer: {
+        width: 70,
+        height: 5,
+        borderRadius: 100,
+        backgroundColor: color.black,
+        opacity: 0.1,
+    },
+    scollPosition: {
+        width: 28,
+        height: 5,
+        borderRadius: 100,
+        backgroundColor: color.black,
+        position: 'absolute',
+    },
+
+
     // exclusive carousel
     exclusiveView: {
-        paddingVertical: 15,
-        paddingLeft: 10,
-    },
-    exclusiveTitleView: {
-        paddingTop: 7,
-        alignSelf: 'flex-start',
-    },
-    exclusiveText: {
-        fontFamily: 'Montserrat-Bold',
-        fontSize: 15,
-    },
-    exclusiveSubText: {
-        fontFamily: 'Montserrat-Medium',
-        fontSize: 12,
+        marginTop: 20,
     },
     carouselImageView: {
         height: 260,
@@ -179,48 +206,53 @@ export default {
         borderBottomLeftRadius: 20, borderBottomRightRadius: 20,
     },
     imageShimmer: {
-        borderRadius: 20, alignSelf: 'center'
+        borderRadius: 20,
+        alignSelf: 'center'
     },
     carouselImage: {
         width: 220,
         height: 200,
     },
     titleView: {
-        marginVertical: 10
+        marginVertical: 10,
+        alignSelf: 'center'
     },
     carouselSubText: {
         paddingTop: 3,
         fontFamily: 'Montserrat-Regular',
         fontSize: 12,
-        textAlign: 'center'
+        textAlign: 'center',
+    },
+    centerTop7: {
+        paddingTop: 7,
+        alignSelf: 'center'
     },
 
     // Categories
 
-    card: {
-        height: height * 0.23,
-        width: width / 2 - 15,
+    categoryCard: {
+        height: 190,
+        width: (width - 20) / 2 - 2.5,
         borderRadius: 20,
-        marginLeft: 5,
         marginTop: 10,
+        marginLeft: 5,
         backgroundColor: color.white,
     },
     imageStyle: {
-        height: height * 0.23,
-        width: width / 2 - 15,
-        backgroundColor: color.gray,
+        height: 190,
+        width: (width - 20) / 2 - 2.5,
+        backgroundColor: color.grey,
         borderRadius: 20,
+        marginLeft: 5,
     },
     imageBgBorder: {
         borderRadius: 20,
     },
     contentView: {
-
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
         paddingHorizontal: 12,
-        borderRadius: 20,
-        paddingBottom: 20
+        paddingBottom: 20,
     },
 }
