@@ -1,38 +1,35 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   View,
   StyleSheet,
   BackHandler,
   ToastAndroid,
-} from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CartCount from '@tabs/CartCount'
-import Icon from 'react-native-vector-icons/AntDesign';
-import Icon2 from 'react-native-vector-icons/Feather';
-import Icon3 from 'react-native-vector-icons/MaterialIcons';
-import color from '@values/colors'
-import Home from '@home/Home'
-import Category from '@category/Category'
-
+} from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import CartCount from "@tabs/CartCount";
+import Icon from "react-native-vector-icons/AntDesign";
+import Icon2 from "react-native-vector-icons/Feather";
+import Icon3 from "react-native-vector-icons/MaterialIcons";
+import color from "@values/Colors";
+import Home from "@home/Home";
+import Category from "@category/Category";
+import Profile from "@profile/Profile";
 
 var backPressed = 0;
-
 
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.unsubscribeFocus = this.props.navigation.addListener('focus', e => {
-      BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+    this.unsubscribeFocus = this.props.navigation.addListener("focus", (e) => {
+      BackHandler.addEventListener("hardwareBackPress", this.handleBackButton);
     });
-    this.unsubscribeBlur = this.props.navigation.addListener('blur', e => {
+    this.unsubscribeBlur = this.props.navigation.addListener("blur", (e) => {
       BackHandler.removeEventListener(
-        'hardwareBackPress',
-        this.handleBackButton,
+        "hardwareBackPress",
+        this.handleBackButton
       );
     });
-
-
   }
 
   handleBackButton = () => {
@@ -41,7 +38,7 @@ class HomeScreen extends React.Component {
       backPressed = 0;
     } else {
       backPressed++;
-      ToastAndroid.show('Press again to close app', ToastAndroid.SHORT);
+      ToastAndroid.show("Press again to close app", ToastAndroid.SHORT);
       setTimeout(() => {
         backPressed = 0;
       }, 2000);
@@ -54,24 +51,23 @@ class HomeScreen extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFocus();
     this.unsubscribeBlur();
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+    BackHandler.removeEventListener("hardwareBackPress", this.handleBackButton);
   }
 
   render() {
     return (
       <View style={styles.tabScreen}>
-        <Home />
+        <Home navigation={this.props.navigation} />
       </View>
     );
   }
 }
 
-
 class CategoryScreen extends React.Component {
   render() {
     return (
       <View style={styles.tabScreen}>
-        <Category />
+        <Category navigation={this.props.navigation} />
       </View>
     );
   }
@@ -91,44 +87,40 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={styles.tabScreen}>
-        <Text>Profile</Text>
+        <Profile navigation={this.props.navigation} />
       </View>
     );
   }
 }
 
-
-
 const screenOptions = (route, color) => {
   let iconName;
 
   switch (route.name) {
-    case 'Home':
-      iconName = 'star';
-      return <Icon2 name={iconName} color={color} size={20} />
+    case "Home":
+      iconName = "star";
+      return <Icon2 name={iconName} color={color} size={20} />;
 
-    case 'Categories':
-      iconName = 'appstore-o';
-      return <Icon name={iconName} color={color} size={20} />
+    case "Categories":
+      iconName = "appstore-o";
+      return <Icon name={iconName} color={color} size={20} />;
 
-    case 'Bag':
-      iconName = 'shopping-cart';
-      return <CartCount name={iconName} color={color} />
+    case "Bag":
+      iconName = "shopping-cart";
+      return <CartCount name={iconName} color={color} />;
 
-    case 'Profile':
-      iconName = 'account-circle';
-      return <Icon3 name={iconName} color={color} size={23} />
+    case "Profile":
+      iconName = "account-circle";
+      return <Icon3 name={iconName} color={color} size={23} />;
 
     default:
       break;
   }
 
-  return
+  return;
 };
 
-
 const Tab = createBottomTabNavigator();
-
 
 export default function TabNavigator() {
   return (
@@ -147,7 +139,7 @@ export default function TabNavigator() {
         },
         labelStyle: {
           fontSize: 10,
-          fontFamily: 'Montserrat-Medium',
+          fontFamily: "Montserrat-Medium",
         },
       }}
     >
@@ -155,19 +147,14 @@ export default function TabNavigator() {
       <Tab.Screen name="Categories" component={CategoryScreen} />
       <Tab.Screen name="Bag" component={BagScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
-
     </Tab.Navigator>
   );
-};
-
+}
 
 const styles = StyleSheet.create({
   tabScreen: {
     backgroundColor: color.white,
     flex: 1,
-    alignItems: 'center'
-  }
-})
-
-
-
+    alignItems: "center",
+  },
+});
