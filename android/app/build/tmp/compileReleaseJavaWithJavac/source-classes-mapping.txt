@@ -1,0 +1,9 @@
+com/jewelcart/MainActivity.java
+ com.jewelcart.MainActivity
+com/jewelcart/MainApplication.java
+ com.jewelcart.MainApplication
+ com.jewelcart.MainApplication$1
+com/jewelcart/BuildConfig.java
+ com.jewelcart.BuildConfig
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
