@@ -1,32 +1,33 @@
-import React, {Component} from 'react';
-import {Text, View, Dimensions} from 'react-native';
-import Carousel from 'react-native-looped-carousel';
-import EStyleSheet from 'react-native-extended-stylesheet';
+import React, { Component } from "react";
+import { Text, View, Dimensions } from "react-native";
+import Carousel from "react-native-looped-carousel";
+import EStyleSheet from "react-native-extended-stylesheet";
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 export default class CarousalComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      size: {width, height},
+      size: { width, height },
     };
   }
 
-  _onLayoutDidChange = e => {
+  _onLayoutDidChange = (e) => {
     const layout = e.nativeEvent.layout;
-    this.setState({size: {width: layout.width, height: layout.height}});
+    this.setState({ size: { width: layout.width, height: layout.height } });
   };
 
   render() {
     return (
-      <View style={{height: 35}} onLayout={this._onLayoutDidChange}>
+      <View style={{ height: 35 }} onLayout={this._onLayoutDidChange}>
         <Carousel
           delay={2000}
           style={this.state.size}
           autoplay
           currentPage={2}
-          onAnimateNextPage={p => console.log(p)}>
+          onAnimateNextPage={(p) => console.log(p)}
+        >
           <View style={[styles.headerComponentView, this.state.size]}>
             <Text style={styles.headerCarousalText}>Lifetime Exchange</Text>
           </View>
@@ -60,14 +61,14 @@ export default class CarousalComponent extends Component {
 const styles = EStyleSheet.create({
   headerComponentView: {
     height: 36,
-    backgroundColor: '#F5F5F6',
-    width: '100%',
+    backgroundColor: "#F5F5F6",
+    width: "100%",
     marginBottom: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   headerCarousalText: {
     fontSize: 12,
-    color: '#282c3f',
+    color: "#282c3f",
   },
 });

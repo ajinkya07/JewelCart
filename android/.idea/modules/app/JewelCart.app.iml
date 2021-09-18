@@ -134,7 +134,10 @@
     <orderEntry type="library" name="Gradle: artifacts:react-native-reanimated:unspecified" level="project" />
     <orderEntry type="module" module-name="JewelCart.react-native-community_masked-view" />
     <orderEntry type="module" module-name="JewelCart.react-native-gesture-handler" />
+    <orderEntry type="module" module-name="JewelCart.react-native-linear-gradient" />
     <orderEntry type="module" module-name="JewelCart.react-native-safe-area-context" />
     <orderEntry type="module" module-name="JewelCart.react-native-screens" />
+    <orderEntry type="module" module-name="JewelCart.react-native-vector-icons" />
+    <orderEntry type="module" module-name="JewelCart.react-native-webview" />
   </component>
 </module>

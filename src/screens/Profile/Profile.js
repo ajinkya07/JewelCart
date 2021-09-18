@@ -237,7 +237,7 @@ const styles = EStyleSheet.create({
     fontFamily: Theme.fontMontSerratSemiBold,
   },
   webViewTextContainer: {
-    marginLeft: 16,
+    marginLeft: 14,
     marginTop: "1.5rem",
   },
   versionText: {

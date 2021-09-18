@@ -1373,6 +1373,7 @@ drawable src_assets_home_3
 drawable src_assets_home_4
 drawable src_assets_home_5
 drawable src_assets_home_chains
+drawable src_assets_home_checked
 drawable src_assets_home_earrings
 drawable src_assets_home_pendants
 drawable src_assets_home_recycle
@@ -1383,6 +1384,13 @@ drawable src_assets_login_fav
 drawable src_assets_login_google
 drawable src_assets_login_instagram
 drawable src_assets_login_youtube
+drawable src_assets_product_arrowup
+drawable src_assets_product_backbutton
+drawable src_assets_product_bag
+drawable src_assets_product_fav
+drawable src_assets_product_img1
+drawable src_assets_product_placearrow
+drawable src_assets_product_search
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light

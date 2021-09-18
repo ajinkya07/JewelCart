@@ -6,4 +6,5 @@ export default {
   CLOSE_ICON: require("@login_assets/closeIcon.png"),
   INSTAGRAM_ICON: require("@login_assets/instagram.png"),
   YOUTUBE_ICON: require("@login_assets/youtube.png"),
+  TICK: require("@home_assets/checked.png"),
 };

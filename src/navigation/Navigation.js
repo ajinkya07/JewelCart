@@ -9,7 +9,9 @@ import ForgotPassword from "@login/ForgotPassword";
 import Products from "@products/Products";
 import Profile from "@profile/Profile";
 import PrivacyPolicy from "@profile/PrivacyPolicy";
-
+import ProductZoomImage from "@products/ProductZoomImage";
+import * as NavigationService from "@values/NavigationService";
+import ProductDetails from "@products/ProductDetails";
 const Stack = createStackNavigator();
 
 function LoginStack() {
@@ -57,6 +59,16 @@ function TabStack() {
         component={PrivacyPolicy}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="ProductZoomImage"
+        component={ProductZoomImage}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
@@ -74,6 +86,18 @@ const RootNavigator = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
+};
+
+export const handleScreenNavigation = (navigateTo, params) => {
+  NavigationService.navigate(navigateTo, params || {});
+};
+
+export const handleScreenNavigationGoBack = (params) => {
+  NavigationService.goBack(params || {});
+};
+
+export const handleTabJumpTo = (jumpTo, params) => {
+  NavigationService.jumpTo(jumpTo, params || {});
 };
 
 export default RootNavigator;

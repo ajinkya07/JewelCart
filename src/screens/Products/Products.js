@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
-  Modal,
+  ScrollView,
   Alert,
   Dimensions,
   Platform,
@@ -16,6 +16,8 @@ import IconPack from "@values/IconPack";
 import CarousalComponent from "./CarousalComponent";
 import color from "@values/Colors";
 import Theme from "@values/Theme";
+import Modal from "react-native-modal";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 const DATA = [
@@ -79,14 +81,10 @@ const sortByArray = [
     text: "Recommended",
   },
 ];
-const VerticalCard = () => {
+const VerticalCard = ({ navigation }) => {
   return (
-    <>
-      <TouchableOpacity
-        style={styles.imageContainer}
-        activeOpacity={0.7}
-        onPress={() => null}
-      >
+    <TouchableOpacity onPress={() => navigation.navigate("ProductDetails")}>
+      <View style={styles.imageContainer} onPress={() => null}>
         <Image
           style={styles.imageStyle}
           source={{
@@ -103,22 +101,27 @@ const VerticalCard = () => {
             resizeMode="contain"
           />
         </TouchableOpacity>
-      </TouchableOpacity>
+      </View>
       <View style={styles.cardInfoContainer}>
         <Text style={styles.cardTitle}>Cursor head Diamond Rings</Text>
         <View style={styles.cardAmtView}>
           <Text style={styles.cardAmtText}>₹21,156</Text>
           <Text style={styles.cardDiscountAmtText}>₹8,156</Text>
         </View>
-        <Text style={styles.discountText}>100% off on making charges</Text>
+        <Text numberOfLines={2} style={styles.discountText}>
+          100% off on making charges
+        </Text>
       </View>
-    </>
+    </TouchableOpacity>
   );
 };
 
 const Products = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [sortModalVisible, setSortModalVisible] = useState(false);
+  const [selectedPriceIndex, setSelectedPrice] = useState(0);
+  const navigation = useNavigation();
+
   const [value, setValue] = useState("");
   const displayModal = (show) => {
     setModalVisible(show);
@@ -138,7 +141,7 @@ const Products = (props) => {
           numColumns={2}
           renderItem={({ item, index }) => (
             <View style={styles.cardContainer} key={item.id}>
-              <VerticalCard />
+              <VerticalCard navigation={navigation} />
             </View>
           )}
           ListHeaderComponent={
@@ -153,6 +156,7 @@ const Products = (props) => {
       <View style={styles.bottomViewContainer}>
         <View style={styles.filterRowContainer}>
           <TouchableOpacity
+            hitSlop={styles.hitSlop}
             style={styles.filterTextView}
             onPress={() => displayModal(true)}
           >
@@ -160,74 +164,88 @@ const Products = (props) => {
           </TouchableOpacity>
           <View style={styles.verticleLine} />
           <TouchableOpacity
+            hitSlop={styles.hitSlop}
             style={styles.filterTextView}
             onPress={() => displaySortModal(true)}
           >
             <Text style={styles.filterTextStyle}>Sort</Text>
           </TouchableOpacity>
           <View style={styles.verticleLine} />
-          <TouchableOpacity style={styles.filterTextView}>
+          <TouchableOpacity
+            hitSlop={styles.hitSlop}
+            style={styles.filterTextView}
+          >
             <Text style={styles.filterTextStyle}>Filter</Text>
           </TouchableOpacity>
         </View>
       </View>
+
       <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        isVisible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+        onBackdropPress={() => setModalVisible(false)}
+        onBackButtonPress={() => setModalVisible(false)}
+        style={styles.modalView}
       >
-        <View style={styles.blurViewStyle}>
-          <View style={styles.modalViewContainer}>
-            <View style={styles.logoIconStyle} />
-            <View>
-              <Text style={styles.titleText}>Price</Text>
-            </View>
-            {priceArray.map((item) => {
+        <View style={styles.modalViewContainer}>
+          <View style={styles.logoIconStyle} />
+          <View>
+            <Text style={styles.titleText}>Price</Text>
+          </View>
+          <ScrollView>
+            {priceArray.map((item, index) => {
               return (
-                <TouchableOpacity style={styles.priceContainer} key={item.id}>
-                  <View style={styles.checkViewStyle} />
+                <TouchableOpacity
+                  onPress={() => setSelectedPrice(index)}
+                  style={styles.priceContainer}
+                  key={item.id}
+                >
+                  <View
+                    style={
+                      selectedPriceIndex === index
+                        ? styles.checkViewSelected
+                        : styles.checkViewNotSelected
+                    }
+                  />
                   <Text style={styles.priceTextStyle}>{item.priceTitle}</Text>
                 </TouchableOpacity>
               );
             })}
-            <View style={styles.priceLineStyle} />
-            <View style={styles.btnContainer}>
-              <RoundedFormButton
-                onPress={() => null}
-                title="Done"
-                buttonStyle={styles.buttonStyle}
-              />
-            </View>
-            <TouchableOpacity
-              style={styles.closeIconView}
-              onPress={() => setModalVisible(false)}
-            >
-              <Image
-                source={IconPack.CLOSE_ICON}
-                style={{ width: 16, height: 16 }}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
+          </ScrollView>
+          <View style={styles.priceLineStyle} />
+          <View style={styles.btnContainer}>
+            <RoundedFormButton
+              onPress={() => null}
+              title="Done"
+              buttonStyle={styles.buttonStyle}
+            />
           </View>
+          <TouchableOpacity
+            style={styles.closeIconView}
+            onPress={() => setModalVisible(false)}
+          >
+            <Image
+              source={IconPack.CLOSE_ICON}
+              style={{ width: 16, height: 16 }}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
       </Modal>
+
       <Modal
-        animationType="slide"
-        transparent={true}
-        visible={sortModalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        isVisible={sortModalVisible}
+        onRequestClose={() => displaySortModal(false)}
+        onBackdropPress={() => displaySortModal(false)}
+        onBackButtonPress={() => displaySortModal(false)}
+        style={styles.modalView}
       >
-        <View style={styles.blurViewStyle}>
-          <View style={styles.sortByModalViewContainer}>
-            <View style={styles.logoIconStyle} />
-            <View>
-              <Text style={styles.titleText}>Sort By</Text>
-            </View>
+        <View style={styles.modalViewContainer}>
+          <View style={styles.logoIconStyle} />
+          <View>
+            <Text style={styles.titleText}>Sort By</Text>
+          </View>
+          <ScrollView>
             {sortByArray.map((res) => {
               return (
                 <View key={res.key} style={styles.sortTextContainer}>
@@ -250,17 +268,17 @@ const Products = (props) => {
                 </View>
               );
             })}
-            <TouchableOpacity
-              style={styles.closeIconView}
-              onPress={() => displaySortModal(false)}
-            >
-              <Image
-                source={IconPack.CLOSE_ICON}
-                style={{ width: 16, height: 16 }}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-          </View>
+          </ScrollView>
+          <TouchableOpacity
+            style={styles.closeIconView}
+            onPress={() => displaySortModal(false)}
+          >
+            <Image
+              source={IconPack.CLOSE_ICON}
+              style={{ width: 16, height: 16 }}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
       </Modal>
     </View>
@@ -269,21 +287,36 @@ const Products = (props) => {
 
 const styles = EStyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: color.white,
     flex: 1,
   },
   imageStyle: {
     width: 130,
     height: 130,
   },
+  hitSlop: {
+    top: 20,
+    right: 20,
+    left: 20,
+    bottom: 20,
+  },
+
   imageContainer: {
     width: 177,
     padding: 20,
     alignItems: "center",
     borderRadius: 6,
-    backgroundColor: "white",
-    borderWidth: 1,
-    borderColor: "#e3e3e3",
+    backgroundColor: color.white,
+    // borderWidth: 1,
+    borderColor: color.grey,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 2,
   },
   cardInfoContainer: {
     marginTop: 5,
@@ -362,9 +395,11 @@ const styles = EStyleSheet.create({
     flex: 1,
   },
   bottomViewContainer: {
-    flex: 0.52,
+    flex: 0.6,
     justifyContent: "flex-end",
-    height: 50,
+    height: 70,
+    borderTopWidth: 0.5,
+    borderTopColor: color.grey,
   },
   columnWrapperStyle: {
     justifyContent: "space-between",
@@ -393,18 +428,16 @@ const styles = EStyleSheet.create({
     backgroundColor: "#000000AA",
   },
   modalViewContainer: {
-    backgroundColor: "white",
     marginTop: Platform.OS === "ios" ? "25rem" : "21rem",
-    flex: 1,
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
+    backgroundColor: color.white,
   },
   sortByModalViewContainer: {
-    backgroundColor: "white",
     marginTop: Platform.OS === "ios" ? "27rem" : "23rem",
-    flex: 1,
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
+    backgroundColor: color.white,
   },
   closeIconView: {
     position: "absolute",
@@ -424,12 +457,19 @@ const styles = EStyleSheet.create({
     marginLeft: 14,
     marginBottom: 35,
   },
-  checkViewStyle: {
+  checkViewSelected: {
     width: 18,
     height: 18,
     borderRadius: 9,
-    backgroundColor: "#c8c7cc",
-    // backgroundColor: '#ff8d6d',
+    backgroundColor: color.brandColor,
+    // backgroundColor: "#ff8d6d",
+  },
+  checkViewNotSelected: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: color.grey,
+    // backgroundColor: "#ff8d6d",
   },
   priceTextStyle: {
     marginLeft: 7,
@@ -443,7 +483,7 @@ const styles = EStyleSheet.create({
   },
   btnContainer: {
     alignItems: "center",
-    marginTop: 12,
+    marginVertical: 12,
   },
   buttonStyle: {
     width: width - 20,
@@ -474,6 +514,12 @@ const styles = EStyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginLeft: 14,
+  },
+  modalView: {
+    justifyContent: "flex-end",
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
   },
 });
 

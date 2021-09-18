@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_bag.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_bag.png"
+    },
+    {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/raw_node_modules_reactnativevectoricons_glyphmaps_materialicons.json.flat",
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/raw/node_modules_reactnativevectoricons_glyphmaps_materialicons.json"
     },
@@ -14,6 +18,10 @@
     {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_img1.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_img1.png"
     },
     {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_node_modules_reactnavigation_stack_src_views_assets_backiconmask.png.flat",
@@ -76,6 +84,14 @@
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_login_google.png"
     },
     {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_fav.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_fav.png"
+    },
+    {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_backbutton.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_backbutton.png"
+    },
+    {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
@@ -104,6 +120,10 @@
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_login_youtube.png"
     },
     {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_search.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_search.png"
+    },
+    {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
@@ -120,6 +140,14 @@
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_login_instagram.png"
     },
     {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_placearrow.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_placearrow.png"
+    },
+    {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_product_arrowup.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_product_arrowup.png"
+    },
+    {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_node_modules_reactnavigation_stack_src_views_assets_backicon.png.flat",
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/node_modules_reactnavigation_stack_src_views_assets_backicon.png"
     },
@@ -130,6 +158,10 @@
     {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_home_earrings.jpg.flat",
         "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_home_earrings.jpg"
+    },
+    {
+        "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/drawable-mdpi_src_assets_home_checked.png.flat",
+        "source": "/Users/ajinkya/Desktop/JewelCart/android/app/build/generated/res/react/release/drawable-mdpi/src_assets_home_checked.png"
     },
     {
         "merged": "/Users/ajinkya/Desktop/JewelCart/android/app/build/intermediates/res/merged/release/mipmap-xxhdpi_ic_launcher_round.png.flat",

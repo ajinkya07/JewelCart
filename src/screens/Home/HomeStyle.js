@@ -3,6 +3,8 @@ import color from "@values/Colors";
 import Theme from "@values/Theme";
 
 const { height, width } = Dimensions.get("screen");
+const hRem = height / 1600;
+const wRem = width / 739;
 
 export default {
   container: {
@@ -21,7 +23,7 @@ export default {
   },
   textBlack18: {
     fontSize: 18,
-    fontFamily: "Montserrat-Bold",
+    fontFamily: Theme.fontMontSerratBold,
     color: color.black,
     lineHeight: 20,
     letterSpacing: 0.2,
@@ -35,7 +37,7 @@ export default {
   },
   textWhite12: {
     fontSize: 12,
-    fontFamily: "Montserrat-Bold",
+    fontFamily: Theme.fontMontSerratBold,
     color: color.white,
   },
   textBold15: {
@@ -53,7 +55,7 @@ export default {
   categoryInnerView: {
     justifyContent: "center",
     alignItems: "center",
-    width: 70,
+    width: 75,
   },
   categoryImageView: {
     height: 55,
@@ -78,7 +80,7 @@ export default {
 
   sliderView: {
     width: width,
-    height: height * 0.32,
+    height: height * 0.35,
   },
   sliderView2: {
     width: width,
@@ -138,6 +140,17 @@ export default {
     marginBottom: 5,
     marginTop: 20,
   },
+  infoShadowCard: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 2.84,
+    elevation: 4,
+    backgroundColor: color.white,
+  },
   infoView: {
     justifyContent: "center",
     alignItems: "center",
@@ -148,8 +161,8 @@ export default {
     alignItems: "center",
   },
   infoImg: {
-    height: 30,
-    width: 30,
+    height: 25,
+    width: 25,
   },
   infoText: {
     fontSize: 10,
@@ -255,5 +268,44 @@ export default {
     alignItems: "flex-start",
     paddingHorizontal: 12,
     paddingBottom: 20,
+  },
+
+  //follow us
+  socialIconContainer: {
+    marginHorizontal: 20,
+    marginTop: 50,
+    marginBottom: 20,
+  },
+  socialLogoView: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginHorizontal: 50,
+    marginTop: 15,
+  },
+  socialIcon: { width: 20, height: 20 },
+
+  // End Placeholder
+  placeholderView: {
+    marginTop: 20,
+    alignItems: "center",
+    backgroundColor: color.secondary_grey,
+  },
+  checkCircle: {
+    height: 30,
+    width: 30,
+    marginTop: 50,
+  },
+  placeholder: {
+    fontFamily: Theme.fontMontSerratMedium,
+    fontSize: 16,
+    color: color.grey,
+    lineHeight: 20,
+    marginTop: 10,
+    textAlign: "center",
+    marginBottom: 30,
+  },
+  placeholderSemiBold: {
+    fontFamily: Theme.fontMontSerratSemiBold,
+    marginBottom: 50,
   },
 };

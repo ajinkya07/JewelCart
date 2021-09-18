@@ -34,7 +34,7 @@ const styles = EStyleSheet.create({
     paddingVertical: hRem * 26,
     backgroundColor: "rgb(255, 155, 109)",
     alignItems: "center",
-    borderRadius: wRem * 4,
+    borderRadius: 25,
   },
   formButtonText: {
     fontSize: 16,

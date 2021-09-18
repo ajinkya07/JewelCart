@@ -15,6 +15,7 @@ import color from "@values/Colors";
 import Home from "@home/Home";
 import Category from "@category/Category";
 import Profile from "@profile/Profile";
+import Bag from "../../screens/Bag/Bag";
 
 var backPressed = 0;
 
@@ -76,8 +77,8 @@ class CategoryScreen extends React.Component {
 class BagScreen extends React.Component {
   render() {
     return (
-      <View style={styles.tabScreen}>
-        <Text>Bag</Text>
+      <View style={styles.bagScreen}>
+        <Bag navigation={this.props.navigation} />
       </View>
     );
   }
@@ -86,7 +87,7 @@ class BagScreen extends React.Component {
 class ProfileScreen extends React.Component {
   render() {
     return (
-      <View style={styles.tabScreen}>
+      <View style={styles.bagScreen}>
         <Profile navigation={this.props.navigation} />
       </View>
     );
@@ -156,5 +157,9 @@ const styles = StyleSheet.create({
     backgroundColor: color.white,
     flex: 1,
     alignItems: "center",
+  },
+  bagScreen: {
+    backgroundColor: color.white,
+    flex: 1,
   },
 });

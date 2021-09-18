@@ -4,7 +4,10 @@ export default {
   black: "#000000",
   white: "#FFFFFF",
   grey: "#808080",
+  secondary_grey: "#DDE2EB",
+
   red: "#FF2400",
+  green: "#2E9A37",
 
   inputColor: "#282c3f",
 

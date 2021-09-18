@@ -20,6 +20,7 @@ import Carousel, {
   Pagination,
 } from "react-native-snap-carousel";
 import Heading from "../../component/Common/Heading";
+import IconPack from "@values/IconPack";
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 const { height, width } = Dimensions.get("screen");
@@ -215,7 +216,7 @@ export default class Home extends Component {
             {sliderData.map((image, index) => (
               <ShimmerPlaceholder
                 key={`banner-${index}`}
-                height={height * 0.32}
+                height={height * 0.35}
                 width={width}
                 visible={!isFetching}
               >
@@ -421,6 +422,56 @@ export default class Home extends Component {
     );
   };
 
+  followUsView = () => {
+    return (
+      <View style={styles.socialIconContainer}>
+        <Text style={styles.textBold15}>
+          Share your #JewelCart story with us
+        </Text>
+        <Text
+          style={[
+            styles.categoryText,
+            { textAlign: "center", marginVertical: 3 },
+          ]}
+        >
+          Use the #JewelCart in your instagram pics to get featured on our page
+        </Text>
+        <View style={styles.socialLogoView}>
+          <Image
+            source={IconPack.FACEBOOK_ICON}
+            style={styles.socialIcon}
+            resizeMode="contain"
+          />
+          <Image
+            source={IconPack.YOUTUBE_ICON}
+            style={[
+              styles.socialIcon,
+              { marginHorizontal: 20, width: 22, height: 22 },
+            ]}
+            resizeMode="contain"
+          />
+          <Image
+            source={IconPack.INSTAGRAM_ICON}
+            style={styles.socialIcon}
+            resizeMode="contain"
+          />
+        </View>
+      </View>
+    );
+  };
+
+  endPlaceholderView = () => {
+    return (
+      <View style={styles.placeholderView}>
+        <Image source={IconPack.TICK} style={styles.checkCircle} />
+        <Text style={styles.placeholder}>
+          {"That’s it for today.\n"}
+          <Text style={styles.placeholderSemiBold}>You’re all caught up!</Text>
+        </Text>
+      </View>
+    );
+  };
+
   render() {
     const {
       categoryMainView,
@@ -430,6 +481,7 @@ export default class Home extends Component {
       infoTop,
       exclusiveSubText,
       textBlack18,
+      infoShadowCard,
     } = styles;
 
     const { scrollIndicatorY } = this.state;
@@ -462,6 +514,7 @@ export default class Home extends Component {
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => this.getInfo(item, index)}
               keyExtractor={(item, index) => `info-${item.id}`}
+              style={infoShadowCard}
             />
           </View>
 
@@ -550,6 +603,12 @@ export default class Home extends Component {
               }}
             />
           </View>
+
+          {/* follow us  */}
+          {this.followUsView()}
+
+          {/* End placeholder */}
+          {this.endPlaceholderView()}
         </Animated.ScrollView>
       </SafeAreaView>
     );

@@ -107,7 +107,9 @@ export default class Category extends Component {
                     <Text style={styles.categoryTitle}>
                       Explore {item.categoryName}
                     </Text>
-                    <Text style={styles.categorySubTitle}>{LOREM_IPSUM}</Text>
+                    <Text numberOfLines={3} style={styles.categorySubTitle}>
+                      {LOREM_IPSUM}
+                    </Text>
                   </View>
                   <View
                     style={{
