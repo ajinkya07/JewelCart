@@ -141,7 +141,7 @@ const RegistrationScreen = (props) => {
         </View>
 
         <View style={styles.borderLineStyle} />
-        <Text style={styles.newOnCartText}>Already Jewel Cart?</Text>
+        <Text style={styles.newOnCartText}>Already E-Kart?</Text>
         <FormButton
           title="Login to your account"
           onPress={() => props.navigation.navigate("Login")}

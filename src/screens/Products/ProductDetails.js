@@ -41,79 +41,80 @@ const HEIGHT = Dimensions.get("window").height;
 const ProductDetails = (props) => {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    props.navigation.setOptions({
-      headerTitle: "",
-      headerTitleStyle: { lineHeight: 21, letterSpacing: 1.7, color: "#000" },
-      headerTitleAlign: "center",
-      headerStyle: {
-        elevation: 0,
-        shadowColor: "transparent",
-      },
-      headerLeft: () => (
-        <TouchableOpacity
-          style={{ marginLeft: 10 }}
-          onPress={() => Alert.alert("Back")}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        >
-          <Image
-            source={BackIcon}
-            resizeMode="contain"
-            style={{ width: 22, height: 22 }}
-          />
-        </TouchableOpacity>
-      ),
-      headerRight: () => (
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <TouchableOpacity
-            style={{ marginHorizontal: 12 }}
-            onPress={() => null}
-            activeOpacity={0.4}
-          >
-            navigation
-            <Image
-              source={IMAGE1}
-              resizeMode="contain"
-              style={{ width: 18, height: 18 }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginHorizontal: 12 }}
-            onPress={() => null}
-            activeOpacity={0.4}
-          >
-            <Image
-              source={SEARCH}
-              resizeMode="contain"
-              style={{ width: 18, height: 18 }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginHorizontal: 12 }}
-            onPress={() => null}
-            activeOpacity={0.4}
-          >
-            <Image
-              source={FAVICON}
-              resizeMode="contain"
-              style={{ width: 18, height: 18 }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginHorizontal: 12 }}
-            onPress={() => null}
-            activeOpacity={0.4}
-          >
-            <Image
-              source={BAGICON}
-              resizeMode="contain"
-              style={{ width: 18, height: 18 }}
-            />
-          </TouchableOpacity>
-        </View>
-      ),
-    });
-  }, []);
+  // useEffect(() => {
+  //   props.navigation.setOptions({
+  //     headerTitle: "ok",
+  //     headerTitleStyle: { lineHeight: 21, letterSpacing: 1.7, color: "#000" },
+  //     headerTitleAlign: "center",
+  //     headerStyle: {
+  //       elevation: 0,
+  //       shadowColor: "transparent",
+  //     },
+  //     headerLeft: () => (
+  //       <TouchableOpacity
+  //         style={{ marginLeft: 10 }}
+  //         onPress={() => Alert.alert("Back")}
+  //         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+  //       >
+  //         <Image
+  //           source={BackIcon}
+  //           resizeMode="contain"
+  //           style={{ width: 22, height: 22 }}
+  //         />
+  //       </TouchableOpacity>
+  //     ),
+  //     headerRight: () => (
+  //       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+  //         <TouchableOpacity
+  //           style={{ marginHorizontal: 12 }}
+  //           onPress={() => null}
+  //           activeOpacity={0.4}
+  //         >
+  //           navigation
+  //           <Image
+  //             source={IMAGE1}
+  //             resizeMode="contain"
+  //             style={{ width: 18, height: 18 }}
+  //           />
+  //         </TouchableOpacity>
+  //         <TouchableOpacity
+  //           style={{ marginHorizontal: 12 }}
+  //           onPress={() => null}
+  //           activeOpacity={0.4}
+  //         >
+  //           <Image
+  //             source={SEARCH}
+  //             resizeMode="contain"
+  //             style={{ width: 18, height: 18 }}
+  //           />
+  //         </TouchableOpacity>
+  //         <TouchableOpacity
+  //           style={{ marginHorizontal: 12 }}
+  //           onPress={() => null}
+  //           activeOpacity={0.4}
+  //         >
+  //           <Image
+  //             source={FAVICON}
+  //             resizeMode="contain"
+  //             style={{ width: 18, height: 18 }}
+  //           />
+  //         </TouchableOpacity>
+  //         <TouchableOpacity
+  //           style={{ marginHorizontal: 12 }}
+  //           onPress={() => null}
+  //           activeOpacity={0.4}
+  //         >
+  //           <Image
+  //             source={BAGICON}
+  //             resizeMode="contain"
+  //             style={{ width: 18, height: 18 }}
+  //           />
+  //         </TouchableOpacity>
+  //       </View>
+  //     ),
+  //   });
+  // }, []);
+
   const [imgActive, setimgActive] = useState(0);
   const [showAboutProduct, setShowAboutProduct] = useState(false);
   const [showProductDetails, setShowProductDetails] = useState(false);

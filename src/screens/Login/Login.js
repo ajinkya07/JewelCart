@@ -120,7 +120,7 @@ export class Login extends Component {
             />
           </View>
           <View style={styles.borderLineStyle} />
-          <Text style={styles.newOnCartText}>New on Jewel Cart?</Text>
+          <Text style={styles.newOnCartText}>New on E-Kart?</Text>
           <FormButton
             onPress={() => this.props.navigation.navigate("Register")}
             title="Create an account"

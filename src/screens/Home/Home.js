@@ -425,16 +425,14 @@ export default class Home extends Component {
   followUsView = () => {
     return (
       <View style={styles.socialIconContainer}>
-        <Text style={styles.textBold15}>
-          Share your #JewelCart story with us
-        </Text>
+        <Text style={styles.textBold15}>Share your #E-Kart story with us</Text>
         <Text
           style={[
             styles.categoryText,
             { textAlign: "center", marginVertical: 3 },
           ]}
         >
-          Use the #JewelCart in your instagram pics to get featured on our page
+          Use the #E-Kart in your instagram pics to get featured on our page
         </Text>
         <View style={styles.socialLogoView}>
           <Image

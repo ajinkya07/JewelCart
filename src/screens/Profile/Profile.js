@@ -39,9 +39,14 @@ const Profile = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.topView}>
-        <View style={styles.logoIcon} />
+        <View style={styles.logoView}>
+          <Image
+            source={require("../../assets/Common/logo.png")}
+            style={styles.logo}
+          />
+        </View>
         <Text style={styles.textTitle}>
-          You are logged out,please login to access login account options.
+          You are logged out, please login to access login account options.
         </Text>
       </View>
       <View style={styles.btnContainer}>
@@ -57,7 +62,7 @@ const Profile = (props) => {
           style={styles.titleTextStyle}
           onPress={() => props.navigation.navigate("PrivacyPolicy")}
         >
-          <Text style={styles.titleTextStyle}>JEWEL CART ASSURANCE</Text>
+          <Text style={styles.titleTextStyle}>E-KART ASSURANCE</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.titleTextStyle}
@@ -102,7 +107,7 @@ const Profile = (props) => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          setModalVisible(false);
         }}
       >
         <View style={styles.blurViewStyle}>
@@ -112,7 +117,7 @@ const Profile = (props) => {
               <Icon2 name={"star"} color={colors.brandColor} size={40} />
             </View>
             <View>
-              <Text style={styles.titleText}>Login to Jewel Cart</Text>
+              <Text style={styles.titleText}>Login to E-Kart</Text>
               <FormInput
                 value={emailAddress}
                 placeholder="Enter Email Address"
@@ -161,7 +166,7 @@ const Profile = (props) => {
               />
             </View>
             <Text style={styles.createAccountText}>
-              New to Jewel Cart? Create an account here
+              New to E-Kart? Create an account here
             </Text>
             <TouchableOpacity
               style={styles.closeIconView}
@@ -198,24 +203,30 @@ const styles = EStyleSheet.create({
     backgroundColor: "white",
     flex: 1,
   },
-  logoIcon: {
-    width: "4rem",
-    height: "4rem",
-    borderRadius: "2rem",
-    borderWidth: 1,
-    borderColor: "#e3e3e3",
+  logoView: {
+    width: "8rem",
+    height: "8rem",
+    borderRadius: "4rem",
     backgroundColor: "lightgrey",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logo: {
+    width: "8rem",
+    height: "8rem",
+    borderRadius: "4rem",
   },
   topView: {
     marginTop: "1.2rem",
     alignItems: "center",
   },
   textTitle: {
-    marginTop: "1.2rem",
     fontSize: "1rem",
     textAlign: "center",
     color: "#282c3f",
     lineHeight: 22,
+    fontFamily: "Montserrat-Regular",
+    marginHorizontal: "1rem",
   },
   btnContainer: {
     alignItems: "center",
@@ -324,7 +335,7 @@ const styles = EStyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
-    marginTop: 20,
+    marginTop: 8,
   },
   socialBtnStyle: {
     width: width / 2 - 20,

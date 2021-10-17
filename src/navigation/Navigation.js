@@ -38,7 +38,7 @@ function LoginStack() {
 
 function TabStack() {
   return (
-    <Stack.Navigator initialRouteName="TabNavigator" headerMode="none">
+    <Stack.Navigator initialRouteName="TabNavigator">
       <Stack.Screen
         name="TabNavigator"
         component={TabNavigator}
@@ -47,7 +47,8 @@ function TabStack() {
       <Stack.Screen
         name="Products"
         component={Products}
-        options={{ headerShown: false }}
+        options={{ headerBackTitleVisible: false }}
+        // options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Profile"
@@ -57,17 +58,19 @@ function TabStack() {
       <Stack.Screen
         name="PrivacyPolicy"
         component={PrivacyPolicy}
-        options={{ headerShown: false }}
+        options={{ headerBackTitleVisible: false, headerTitle: "" }}
       />
       <Stack.Screen
         name="ProductZoomImage"
         component={ProductZoomImage}
-        options={{ headerShown: false }}
+        options={{ headerBackTitleVisible: false, headerTitle: "" }}
+        // options={{ headerShown: false }}
       />
       <Stack.Screen
         name="ProductDetails"
         component={ProductDetails}
-        options={{ headerShown: false }}
+        options={{ headerBackTitleVisible: false, headerTitle: "" }}
+        // options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
@@ -76,8 +79,8 @@ function TabStack() {
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" headerMode="none">
-        <Stack.Screen name="Login" component={LoginStack} />
+      <Stack.Navigator initialRouteName="TabNavigator">
+        {/* <Stack.Screen name="Login" component={LoginStack} /> */}
         <Stack.Screen
           name="TabNavigator"
           component={TabStack}

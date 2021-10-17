@@ -22,8 +22,7 @@ const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 const { height, width } = Dimensions.get("screen");
 var isFetching = false;
 
-const LOREM_IPSUM =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.";
+const LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
 const categoryDataSource = [
   {
@@ -73,12 +72,6 @@ const categoryDataSource = [
     categoryName: "Rings",
     categoryImage: require("@home_assets/4.jpg"),
     bgColor: color.bg2,
-  },
-  {
-    id: "9",
-    categoryName: "All Jewellery",
-    categoryImage: require("@home_assets/5.jpg"),
-    bgColor: color.bg3,
   },
 ];
 

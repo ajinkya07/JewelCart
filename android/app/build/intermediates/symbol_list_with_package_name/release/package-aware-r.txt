@@ -1367,6 +1367,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable redbox_top_border_background
+drawable src_assets_common_logo
 drawable src_assets_home_1
 drawable src_assets_home_2
 drawable src_assets_home_3
@@ -1837,6 +1838,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw app
